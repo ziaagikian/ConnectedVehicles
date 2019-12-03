@@ -1,0 +1,106 @@
+version: "3.2"
+
+
+services:
+
+  consul:
+    container_name: 'consul'
+    image: gliderlabs/consul-server:latest
+    hostname: 127.0.0.1
+    ports: 
+      - "8500:8500"
+    # network: 
+    #   - bridge
+    # command: "--name test-consul advertise=127.0.0.1 -server -bootstrap"
+    # command: "consul agent -server -ui -node=server-1 -bootstrap-expect=1 -client=0.0.0.0"
+    command: "consul agent -server -ui -bootstrap-expect=1 -client=0.0.0.0"
+
+  registrator:
+    container_name: registrator
+    image: gliderlabs/registrator:master
+    command: "consul://localhost:8500"
+    volumes:
+      - "/var/run/docker.sock:/tmp/docker.sock"
+    restart: always
+    links: 
+      - consul
+    # network_mode: "bridge"
+    
+
+
+  rabbitmq-service:
+    container_name: 'rabbitmq-container'
+    image: "rabbitmq:3-management"
+    hostname: rabbit
+    environment:
+      RABBITMQ_ERLANG_COOKIE: "SWQOKODSQALRPCLNMEQG"
+      RABBITMQ_DEFAULT_USER: "guest"
+      RABBITMQ_DEFAULT_PASS: "guest"
+      RABBITMQ_DEFAULT_VHOST: "/"
+    ports:
+          - "15672:15672"
+          - "5672:5672"
+    labels:
+      NAME: "rabbitmq-server"
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:15672"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+    labels: 
+      name: "rabbit"
+    volumes:
+      - ../data:/var/lib/rabbitmq
+      - ../data/logs:/var/log/rabbitmq
+    restart: always
+  
+  api-gateway:
+    container_name: "api-gateway"
+    build:
+      context: './api-gateway/'
+      dockerfile: Dockerfile
+    tty: true
+    ports:
+      - "8080:7000"
+    labels:
+      name: "API gateway"
+    links: 
+      - rabbitmq-service
+    # Mount app src code and node_modules to the container. 
+    # To be deleted in case for AWS/GCP/Azure cloud platforms.
+    volumes: 
+      - ./api-gateway:/usr/src/api-gateway:rw
+      - /usr/src/api-gateway/node_modules
+    
+    restart: always
+  
+  customer-service:
+    container_name: 'customer-service'
+    build: 
+      context: './customer_service/'
+      dockerfile: Dockerfile
+    tty: true
+    labels: 
+      name: "Customer Service"
+    links:
+     - api-gateway
+    volumes: 
+      - ./customer_service:/usr/src/customer_service:rw
+      - /usr/src/customer_service/node_modules
+    restart: always
+    
+  vehicle-service:
+    container_name: 'vehicle-service'
+    build: 
+      context: './vehicle_service/'
+      dockerfile: Dockerfile
+    tty: true
+    labels: 
+      name: "Vehicle Service"
+    links: 
+     - api-gateway
+    volumes: 
+      - ./vehicle_service:/usr/src/vehicle_service:rw
+      - /usr/src/vehicle_service/node_modules
+    restart: always
+  

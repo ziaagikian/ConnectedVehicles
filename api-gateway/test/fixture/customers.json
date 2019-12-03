@@ -1,0 +1,15 @@
+[{
+    "id": 1,
+    "name": "Kalles Grustransporter AB Cementvägen 8",
+    "address": "111 11 Södertälje"
+},
+{
+    "id": 2,
+    "name": "Johans Bulk AB Balkvägen 12",
+    "address": "222 22 Stockholm"
+},
+{
+    "id": 3,
+    "name": "Haralds Värdetransporter AB Budgetvägen 1",
+    "address": "333 33 Uppsala"
+}]

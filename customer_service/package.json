@@ -1,0 +1,22 @@
+{
+  "name": "customer-service-com-swedq-challenge",
+  "version": "1.0.0",
+  "description": "Customer Microservice handling UI Customer related Operation. ",
+  "main": "app.js",
+  "scripts": {
+    "test": "\"test app.js\""
+  },
+  "keywords": [
+    "connectedvehicles",
+    "microservices",
+    "Customerservice"
+  ],
+  "author": "ziaagikian <github.com/ziaagikian>",
+  "license": "ISC",
+  "dependencies": {
+    "amqplib": "^0.5.5",
+    "bluebird": "^3.7.2",
+    "jsonwebtoken": "^8.5.1",
+    "redis": "^2.8.0"
+  }
+}

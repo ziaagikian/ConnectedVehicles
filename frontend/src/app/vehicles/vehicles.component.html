@@ -1,0 +1,55 @@
+<div class="tbl-wrap">
+    <table class="tbl-1">
+      <thead>
+        <tr>
+          <th>Sr. No. </th>
+          <th>picture</th>
+          <!-- <th>id</th> -->
+          <th>name</th>
+          <th>address</th>
+          <th>VIN number</th>
+          <th>Registration Number</th>
+          <th>status</th>
+          <th>last updated</th>
+        </tr>
+      </thead>
+  
+      <ng-container class="container" *ngIf="apiService.data">
+        <tbody>
+          <tr *ngFor="let vinfo of apiService.data; let i = index">
+            <!-- <th>Picture</th> -->
+            <td> {{ (i + 1) }}. </td>
+            <td>
+              <div class="img-wrap">
+                <img src="../assets/sedan.png" alt="user">
+              </div>
+            </td>
+            <!-- <td> {{ vinfo.id}} </td> -->
+            <td> {{ vinfo.name}} </td>
+            <td> {{ vinfo.address }} </td>
+            <td> {{ vinfo.vin }} </td>
+            <td> {{ vinfo.reg_num }} </td>
+            <td [ngClass]="(vinfo.status=='connected')? 'grn-clr' : 'red-clr' "> {{ vinfo.status }} </td>
+            <!-- <ng-template #valueNotExist> <td> --,-- </td>  </ng-template>
+            <td> {{ vinfo.status }} </td> -->
+            <td *ngIf="vinfo.last_updated else nostatus"> {{ vinfo.last_updated }} </td>
+            <ng-template #nostatus>
+              <td>--,--</td>
+            </ng-template>
+          </tr>
+        </tbody>
+      </ng-container>
+      <tr *ngIf="!apiService.data">
+        <td colspan="8">
+          <!--404 Section Implemenetation-->
+          <div class="e404-wrap">
+            <img src="assets/error-banner.png" alt="404-error">
+            <h2>Sorry, something went wrong.</h2>
+            <p>Let's give it one more try</p>
+            <button class="btn gray-btn" (click)="getAllVehicles()">reload page</button>
+          </div> <!-- e404-wrap ends -->
+        </td>
+      </tr>
+    </table>
+  </div>
+  

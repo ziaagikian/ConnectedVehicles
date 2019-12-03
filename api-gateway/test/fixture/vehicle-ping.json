@@ -1,0 +1,15 @@
+{
+    "success": true,
+    "statusCode": 200,
+    "message": "Data retrieved  Successfully",
+    "entities": [
+        {
+            "id": 5,
+            "vin": "YS2R4X20005387949",
+            "reg_num": "MNO345",
+            "status": "connected",
+            "last_updated": "23:23:59",
+            "userId": 2
+        }
+    ]
+}

@@ -1,0 +1,72 @@
+name: 'Microservices based Dockerised  CI  for Travis'
+author: 'Zia Ur Rahman <githu.com/ziaagikian>'
+os:
+  - linux
+
+language: node_js
+node_js:
+  - "stable"
+
+# Build Type
+env:
+  - NODE_ENV=production
+
+services:
+  - docker
+
+cache:
+  directories:
+    - "./api-gateway/node_modules"
+    - "./customer_service/node_modules"
+    - "./vehicle_serices/node_modules"
+    - "./frontend/node_modules"
+
+before_script:
+  - docker-compose build
+
+script:
+  # Run   in detached  mode
+  - docker-compose up -d
+  # Sleep 60 seconds are Service Discovey, hystrix and RabbitMQ
+  - sleep 60
+  #  Run Automation and Integration Tests
+  - docker-compose run api-gateway  npm test
+
+after_success:
+  echo "Build Succeded"
+
+after_failure:
+  echo  "Build Failed"
+
+#Send success Failure notifications for master branch only
+notifications:
+  email: 
+    recipients:
+      - test@xyz.com
+    on_success: always
+    on_failure: always
+    
+# Only build master repo
+branches: 
+  only: 
+    - master
+
+after_script:
+  # Stop Containers
+  - docker-compose stop
+  - docker-compose down
+
+###  My heroku trial subscruption is expired Committed out this phase
+
+# deploy:
+#   provider: heroku
+#   api_key:
+#     secure: ....
+#   app: 'Connectd Vehicles Microservices'
+#   on:
+#     repo: 'tarvis-ci/connected-vehicle-backend'
+
+## Deleting Container
+# after_deploy:
+#   - docker-compose stop
+#   - docker-compose down

@@ -1,0 +1,61 @@
+name: 'Frontend CI  for Travis'
+author: 'Zia Ur Rahman <githu.com/ziaagikian>'
+
+os:
+  - linux
+
+language: node_js
+node_js:
+  - "stable"
+
+# Build Type
+env:
+  - NODE_ENV=production
+branches:
+  only:
+    - master
+
+services:
+  - docker
+
+cache:
+  directories:
+    - "./node_modules"
+
+before_script:
+  - docker-compose build
+
+script:
+  - docker-compose up -d
+
+after_success:
+  # Delete
+  echo "Build Succeded"
+
+after_failure:
+  echo  "Build Failed"
+
+#Send success Failure notifications for master branch only
+notifications:
+  email:
+    recipients:
+      - ziaagikian@gmail.com
+    on_success: always
+    on_failure: always
+
+after_script:
+  # Stop Containers
+  - docker-compose stop
+
+###  My heroku trial subscruption is expired Committed out this phase
+
+# deploy:
+#   provider: heroku
+#   api_key:
+#     secure: ....
+#   app: 'Connectd Vehicles Fronted'
+#   on:
+#     repo: 'ziaagikian/frontend'
+after_deploy:
+  docker-compose down
+

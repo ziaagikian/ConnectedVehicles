@@ -1,0 +1,10 @@
+FROM api-gateway
+
+COPY  test test
+ENV NODE_ENV test
+
+#RUN    npm test
+
+
+# Override the command, to run the test instead of the application
+CMD mocha test/integration/*.js --exit

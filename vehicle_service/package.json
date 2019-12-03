@@ -1,0 +1,21 @@
+{
+  "name": "vehicle-service-com-swedq-challenge",
+  "version": "1.0.0",
+  "description": "UI Microservice handling UI related opertaions like show listing, filtering, displaying etc ",
+  "main": "app.js",
+  "scripts": {
+    "test": "\"test app.js\""
+  },
+  "keywords": [
+    "connectedvehicles",
+    "microservices",
+    "uiservice"
+  ],
+  "author": "ziaagikian <github.com/ziaagikian>",
+  "license": "ISC",
+  "dependencies": {
+    "amqplib": "^0.5.5",
+    "jsonwebtoken": "^8.5.1",
+    "moment": "^2.24.0"
+  }
+}

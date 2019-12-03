@@ -1,0 +1,48 @@
+[{
+        "id": 1,
+        "vin": "YS2R4X20005399401",
+        "reg_num": "ABC123",
+        "status": "disconnected",
+        "last_updated": "",
+        "userId": 1
+    },
+    {
+        "id": 2,
+        "vin": "VLUR4X20009093588",
+        "reg_num": "DEF456",
+        "status": "disconnected",
+        "last_updated": "",
+        "userId": 1
+    }, {
+        "id": 4,
+        "vin": "YS2R4X20005388011",
+        "reg_num": "JKL012",
+        "status": "disconnected",
+        "last_updated": "",
+        "userId": 2
+    }, {
+        "id": 5,
+        "vin": "YS2R4X20005387949",
+        "reg_num": "MNO345",
+        "status": "disconnected",
+        "last_updated": "",
+        "userId": 2
+    },
+
+    {
+        "id": 6,
+        "vin": "YS2R4X20005387765",
+        "reg_num": "PQR678",
+        "status": "connected",
+        "last_updated": "",
+        "userId": 3
+    },
+    {
+        "id": 7,
+        "vin": "YS2R4X20005387055",
+        "reg_num": "STU901",
+        "status": "disconnected",
+        "last_updated": "",
+        "userId": 3
+    }
+]

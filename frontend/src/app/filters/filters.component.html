@@ -1,0 +1,20 @@
+
+<div class="filters-wrap">
+    <span> <strong> Filters: </strong></span>
+    <ng-container class="container"> <!--  *ngIf="VehByCustomer$" -->
+      <select #v (change)="getCustomerData(v.value); s.value = '' " id="customer_select">
+        <option value="">All Customers</option>
+        <option value="{{cusInfo?.id}}" *ngFor="let cusInfo of (VehByCustomer$ | async)?.entities">
+          {{ cusInfo.name }}
+        </option>
+      </select>
+    </ng-container>
+    <ng-container class="container">
+      <select #s (change)="getVehicleStatus(s.value); v.value = '' " id="status_select">
+        <option value="">Status</option>
+        <option value="connected">connected</option>
+        <option value="disconnected">disconnected</option>
+      </select>
+    </ng-container>
+   </div>
+  

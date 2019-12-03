@@ -1,0 +1,15 @@
+.filters-wrap{
+    text-align: right;
+}
+
+.filters-wrap select{
+    margin: 0 5px;
+    padding: 5px 15px;
+    font-size: 16px;
+    text-transform: capitalize;
+}
+
+.filters-wrap select option{
+    font-size: 14px;
+    font-weight: 400;
+}

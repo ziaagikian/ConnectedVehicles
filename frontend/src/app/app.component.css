@@ -1,0 +1,64 @@
+.tbl-wrap{
+    max-height: 450px;
+    overflow: scroll;
+    margin: 20px 0;
+    border: 1px solid #555;
+  }
+  
+  .tbl-1 {
+    
+    width: 100%;
+    border-spacing: 0;
+  }
+  
+  .tbl-1 tr th,
+  .tbl-1 tr td {
+    padding: 10px 15px;
+    text-align: center;
+    border: none;
+    margin: 0;
+    text-transform: capitalize;
+    font-weight: 400;
+    min-width: 80px;
+  }
+  
+  .tbl-1 tr th {
+    background-color: #8f7878;
+    text-transform: uppercase;
+    font-weight: 700;
+  }
+  
+  .tbl-1 tr:nth-child(2n+1) td {
+    background-color: #e4e4e4;
+  }
+  
+  .img-wrap {
+    /* width: 45px; */
+    height: 45px;
+    overflow: hidden;
+    /* border: 1px solid #cecece; */
+    margin: 0 auto;
+    text-align: center;
+  }
+  
+  .img-wrap img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  
+  .filters-wrap {
+    text-align: right;
+  }
+  
+  .filters-wrap select {
+    margin: 0 5px;
+    padding: 5px 15px;
+    font-size: 16px;
+  }
+  
+  .filters-wrap select option {
+    font-size: 14px;
+    font-weight: 400;
+  }
+  

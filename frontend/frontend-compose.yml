@@ -1,0 +1,20 @@
+version: "3.2"
+
+services:
+
+  frontend-app:
+    container_name: 'frontend'
+    build:
+      context: .
+      dockerfile: Dockerfile
+      # Volume binding
+    volumes:
+      - '.:/usr/src/frontend'
+      - '/usr/src/frontend/node_modules'
+    tty: true
+    ports:
+        - "4200:4200"
+    labels:
+      name: "Frontend App"
+
+    restart: always

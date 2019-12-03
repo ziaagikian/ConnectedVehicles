@@ -1,0 +1,359 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Code coverage report for api-gateway/communication/queue.js</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="../../prettify.css" />
+    <link rel="stylesheet" href="../../base.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style type='text/css'>
+        .coverage-summary .sorter {
+            background-image: url(../../sort-arrow-sprite.png);
+        }
+    </style>
+</head>
+<body>
+<div class='wrapper'>
+  <div class='pad1'>
+    <h1>
+      <a href="../../index.html">all files</a> / <a href="index.html">api-gateway/communication/</a> queue.js
+    </h1>
+    <div class='clearfix'>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">75.68% </span>
+        <span class="quiet">Statements</span>
+        <span class='fraction'>28/37</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">50% </span>
+        <span class="quiet">Branches</span>
+        <span class='fraction'>3/6</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">85.71% </span>
+        <span class="quiet">Functions</span>
+        <span class='fraction'>6/7</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">75.68% </span>
+        <span class="quiet">Lines</span>
+        <span class='fraction'>28/37</span>
+      </div>
+    </div>
+  </div>
+  <div class='status-line medium'></div>
+<pre><table class="coverage">
+<tr><td class="line-count quiet">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98
+99</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span></td><td class="text"><pre class="prettyprint lang-js">&nbsp;
+var amqp = require('amqplib/callback_api');
+&nbsp;
+&nbsp;
+const ResponseUtils = require('../libs/response-utils')
+const httpCodes = require('../libs/http-codes')
+const respMessgs = require('../libs/response-messages')
+// const validationMessages = require('../validations/messages');
+const responseUtils = new ResponseUtils();
+&nbsp;
+let config  = require('../config/production')
+&nbsp;
+// async function  publisherMessageToQueue (messageInfo) {
+//      // connect to Rabbit MQ
+//   let connection = await amqp.connect(config.amqpIp);
+&nbsp;
+//   // create a channel and prefetch 1 message at a time
+//   let channel = await connection.createChannel();
+//   await channel.prefetch(1);
+&nbsp;
+//   // create a second channel to send back the results
+//   let resultsChannel = await connection.createConfirmChannel();
+&nbsp;
+//   // start consuming messages
+//   await consume({ connection, channel, resultsChannel });
+// }
+&nbsp;
+&nbsp;
+function publishMessageToQueue(messageInfo, channelName){
+    return new Promise  ((resolve, reject) =&gt; {
+        try {
+            amqp.connect(config.amqpIp, function (err, conn) {
+                <span class="missing-if-branch" title="if path not taken" >I</span>if (err) {
+<span class="cstat-no" title="statement not covered" >                    queueError(reject)</span>
+                } else {
+                    // logger.success('R A B B I T M Q', 'Connected');
+                    conn.createChannel(function (err, ch) {
+                        <span class="missing-if-branch" title="if path not taken" >I</span>if (err) {
+<span class="cstat-no" title="statement not covered" >                            queueError(reject)</span>
+                        } else {
+                            let correlationId = generateUuid();
+                            // ch.assertQueue(`${config.amqpChannelName}-${correlationId}`, {
+                            ch.assertQueue(`${channelName}-${correlationId}`, {
+                                exclusive: true,
+                            }, function (err, q) {
+                                ch.consume(q.queue, function (msg) {
+                                    <span class="missing-if-branch" title="else path not taken" >E</span>if (msg.properties.correlationId == correlationId) {
+                                        //logger.success(' Success ', ' Response Recieved ');
+                                        try {
+                                            let replyFromService = msg.content.toString();
+                                            replyFromService = JSON.parse(replyFromService);
+                                            resolve(replyFromService);
+                                        } catch (error) {
+<span class="cstat-no" title="statement not covered" >                                            console.error('Queue API GW', error)</span>
+<span class="cstat-no" title="statement not covered" >                                            reject(error);</span>
+                                        }
+                                        //Close Connection
+                                         conn.close()
+                                        // setTimeout(function() {
+                                        //     conn.close();
+                                        //   //  process.exit(0);
+                                        // }, 5000);
+                    
+                                    }
+                                }, {
+                                    noAck: true
+                                });
+                                console.log("Sending message to Queue ", JSON.stringify(messageInfo))
+                                // ch.publish(q, 'message_queues', new Buffer(new_msg))
+                                ch.sendToQueue(channelName,
+                                    new Buffer(JSON.stringify(messageInfo)), {
+                                        correlationId: correlationId,
+                                        replyTo: q.queue
+                                    });
+                            });
+                        }
+                    });
+                }
+            });
+        } catch (error) {
+<span class="cstat-no" title="statement not covered" >            console.error('  Queue Error ', error);</span>
+<span class="cstat-no" title="statement not covered" >            queueError(reject)</span>
+            //reject(api.response(false, api.code.INTERVAL_SERVER_ERROR, api.message.UNKNOWN));
+        }
+    });
+}
+&nbsp;
+<span class="fstat-no" title="function not covered" >function queueError(reject){</span>
+<span class="cstat-no" title="statement not covered" >    console.error('Queue API-GW', 'Rabbit MQ might be down or not responding');</span>
+<span class="cstat-no" title="statement not covered" >    responseUtils.setError(httpCodes.INTERVAL_SERVER_ERROR, respMessgs.INTERVAL_SERVER_ERROR);</span>
+<span class="cstat-no" title="statement not covered" >    reject(JSON.stringify(responseUtils));</span>
+}
+// TODO change to TimeStamp
+function generateUuid() {
+    return Math.random().toString() +
+        Math.random().toString() +
+        Math.random().toString();
+}
+module.exports = publishMessageToQueue;</pre></td></tr>
+</table></pre>
+<div class='push'></div><!-- for sticky footer -->
+</div><!-- /wrapper -->
+<div class='footer quiet pad2 space-top1 center small'>
+  Code coverage
+  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Fri Nov 15 2019 00:27:30 GMT+0500 (Pakistan Standard Time)
+</div>
+</div>
+<script src="../../prettify.js"></script>
+<script>
+window.onload = function () {
+        if (typeof prettyPrint === 'function') {
+            prettyPrint();
+        }
+};
+</script>
+<script src="../../sorter.js"></script>
+</body>
+</html>
