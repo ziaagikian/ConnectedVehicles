@@ -43,6 +43,7 @@ notifications:
   email: 
     recipients:
       - test@xyz.com
+      - abc@sample.com
     on_success: always
     on_failure: always
     

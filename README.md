@@ -1,4 +1,6 @@
-# ConnectedVehicles-Backend
+[![Build Status](https://travis-ci.org/ziaagikian/ConnectedVehicles.svg?branch=master)](https://travis-ci.org/ziaagikian/ConnectedVehicles)
+
+# ConnectedVehicles 
 
 Microservices based  End to End Dockerized Application to Connected Vehicles. 
 
